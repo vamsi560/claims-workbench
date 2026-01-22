@@ -7,7 +7,7 @@ import type {
   DashboardStats,
 } from '../types';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://claims-workbench-backend.onrender.com';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -59,6 +59,11 @@ export const fnolApi = {
 
   ingestFNOL: async (payload: ParsedEmailPayload): Promise<any> => {
     const { data } = await api.post('/api/fnol-ingest', payload);
+    return data;
+  },
+
+  healthCheck: async (): Promise<{ status: string }> => {
+    const { data } = await api.get('/api/health');
     return data;
   },
 };
