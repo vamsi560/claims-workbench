@@ -56,6 +56,7 @@ export interface FNOLDetail {
   trace: FNOLTrace;
   stage_executions: FNOLStageExecution[];
   llm_metrics: LLMMetric[];
+  extracted_fields?: Record<string, any>; // Added for displaying extracted fields
 }
 
 export interface LLMMetricsOverview {

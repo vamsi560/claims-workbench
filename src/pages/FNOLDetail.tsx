@@ -104,6 +104,23 @@ export function FNOLDetail({ fnolId, onBack }: FNOLDetailProps) {
         </div>
       </div>
 
+      {/* Extracted Fields Section */}
+      {data.extracted_fields && Object.keys(data.extracted_fields).length > 0 && (
+        <div className="bg-white rounded-lg shadow p-6 border border-gray-200">
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Extracted Fields</h2>
+          <table className="min-w-full divide-y divide-gray-200">
+            <tbody className="bg-white divide-y divide-gray-100">
+              {Object.entries(data.extracted_fields).map(([key, value]) => (
+                <tr key={key}>
+                  <td className="px-4 py-2 font-medium text-gray-700 whitespace-nowrap">{key.replace(/_/g, ' ')}</td>
+                  <td className="px-4 py-2 text-gray-900 break-all">{String(value)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white rounded-lg shadow p-6 border border-gray-200">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">
